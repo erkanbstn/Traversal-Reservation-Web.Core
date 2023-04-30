@@ -1,0 +1,54 @@
+﻿@using EntityLayer.Concrete
+@model List<Feature>
+
+
+<div class="best-rooms py-5">
+    <div class="container py-md-5">
+        <div class="ban-content-inf row">
+
+            @foreach (var fet in Model)
+            {
+                if (fet.isBigImage)
+                {
+                    <div class="maghny-gd-1 col-lg-6">
+                        <div class="maghny-grid">
+                            <figure class="effect-lily border-radius  m-0">
+                                <img class="img-fluid" src="~/Tra/assets/images/@fet.Image" alt="" />
+                                <figcaption>
+                                    <div>
+                                        <h4>@fet.Title</h4>
+                                        <p>Fiyat : @fet.Description₺</p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="maghny-gd-1 col-lg-6 mt-lg-0 mt-4">
+                <div class="row">
+                    @foreach (var fet2 in Model)
+                    {
+                        if (!fet2.isBigImage)
+                        {
+                            <div class="maghny-gd-1 col-6">
+                                <div class="maghny-grid" style="margin-top:10px;">
+                                    <figure class="effect-lily border-radius">
+                                        <img class="img-fluid" src="~/Tra/assets/images/@fet2.Image" alt="" />
+                                        <figcaption>
+                                            <div>
+                                                <h4>@fet2.Title</h4>
+                                                <p>Fiyat : @fet2.Description₺ </p>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@model UserRegisterViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Traversal Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- LINEARICONS -->
+    <link rel="stylesheet" href="~/ReC/fonts/linearicons/style.css">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="~/ReC/css/style.css">
+</head>
+
+<body>
+
+
+    <div class="wrapper">
+        <div class="inner">
+            <img src="~/ReC/images/image-1.png" alt="" class="image-1">
+            <form asp-action="Register" asp-controller="Auth" asp-area="" method="post">
+                <h3>Yeni Hesap?</h3>
+                <div class="form-holder">
+                    <span class="lnr lnr-user"></span>
+                    <input type="text" class="form-control" asp-for="UserName" placeholder="Kullanıcı Adı">
+                </div>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+                <div class="form-holder">
+                    <span class="lnr lnr-envelope"></span>
+                    <input type="text" class="form-control" asp-for="Email" placeholder="Email">
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+                <div class="form-holder">
+                    <span class="lnr lnr-lock"></span>
+                    <input type="password" class="form-control" required asp-for="Password" placeholder="Parola">
+                </div>
+                <span asp-validation-for="Password" class="text-danger"></span>
+                <div class="form-holder">
+                    <span class="lnr lnr-lock"></span>
+                    <input type="password" class="form-control" required asp-for="ConfirmPassword" placeholder="Parola Tekrar">
+                </div>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <button>
+                    <span>Kayıt Ol</span>
+                </button>
+            </form>
+            <img src="~/ReC/images/image-2.png" alt="" class="image-2">
+        </div>
+
+    </div>
+
+    <script src="~/ReC/js/jquery-3.3.1.min.js"></script>
+    <script src="~/ReC/js/main.js"></script>
+</body>
+</html>

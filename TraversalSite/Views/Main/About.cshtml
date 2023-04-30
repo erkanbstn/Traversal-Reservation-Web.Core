@@ -1,0 +1,98 @@
+﻿
+@model Destination
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+    <section class="w3l-about-breadcrumb text-left">
+        <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+            <div class="container py-2">
+                <h2 class="title">Hakkımızda</h2>
+                <ul class="breadcrumbs-custom-path mt-2">
+                    <li><a href="~/Main/Index">Ana Sayfa</a></li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Hakkımızda </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+<section class="w3l-cta4 py-5">
+    <div class="container py-lg-5">
+        <div class="ab-section text-center">
+            <h6 class="sub-title">Traversal Hakkında</h6>
+            <h3 class="hny-title">Hep Birlikte</h3>
+            <p class="py-3 mb-3">
+                İnsanların Gezmek ve Görmek İstediği Yerlerin Haritalarının ve Rehberlerinin  Onlara Öncülük Edecek Şekilde Belirlendiği
+                ve İnsanların Hizmetine Sunulduğu Online Sistemdir.
+            </p>
+            <a href="~/Main/Services" class="btn btn-style btn-primary">Daha Fazla</a>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-9 mx-auto">
+                <img src="~/Tra/assets/images/banner3.jpg" class="img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+ 
+
+
+
+
+    <section class="w3l-content-6 py-5">
+        <div class="container py-lg-5">
+            <div class="row">
+                <div class="col-lg-6 content-6-left pr-lg-5">
+                    <h6 class="sub-title">Neden Biz ?</h6>
+                    <h3 class="hny-title">Hayat Konfor Alanınızın Sonunda Başlar.</h3>
+                </div>
+                <div class="col-lg-6 content-6-right mt-lg-0 mt-4">
+                    <p class="mb-3">
+                        Çünkü Kolaylıkla Hayallerinizi Gerçekleştirebilirsiniz.
+                    </p>
+                    <p class="mb-3">
+                        Çünkü Rahatlıkla Gezmek İstediğiniz Yerleri Gezebilirsiniz.
+                    </p>
+                    <a href="~/Main/Services" class="btn btn-style btn-primary mt-4">Daha Fazla</a>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+
+
+
+    @await Component.InvokeAsync("AboutDestView")
+
+    <section class="w3l-statshny py-5" id="stats">
+        <div class="container py-lg-5 py-md-4">
+            <div class="w3-stats-inner-info">
+                <div class="row">
+                    <div class="col-lg-4 col-6 stats_info counter_grid text-left">
+                        <span class="fa fa-smile-o"></span>
+                    <p class="counter">@ViewBag.musteri</p>
+                        <h4>Mutlu Müşteriler</h4>
+                    </div>
+                    <div class="col-lg-4 col-6 stats_info counter_grid1 text-left">
+                        <span class="fa fa-users"></span>
+                    <p class="counter">@ViewBag.tur</p>
+                        <h4>Turlar</h4>
+                    </div>
+                    <div class="col-lg-4 col-6 stats_info counter_grid mt-lg-0 mt-5 text-left">
+                        <span class="fa fa-database"></span>
+                        <p class="counter">@ViewBag.rehber</p>
+                        <h4>Rehberler</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    @await Component.InvokeAsync("OurTeamView")
+

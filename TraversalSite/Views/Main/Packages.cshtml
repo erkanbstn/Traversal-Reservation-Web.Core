@@ -1,0 +1,52 @@
+﻿@model List<Destination>
+@{
+    ViewData["Title"] = "Packages";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container">
+            <h2 class="title">Paketler</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="~/Main/Index">Ana Sayfa</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Paketler </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<section class="w3l-pricinghny">
+    <div class="pricing-inner-info py-5">
+        <div class="container py-lg-4">
+            <!--/pricing-info-grids-->
+            <div class="pricing-info-grids">
+
+                @foreach (var pac in Model)
+                {
+                    <div class="price-box">
+                        <div class="grid grid-column-2">
+                            <div class="column pr-img-gd">
+                                <h6 class="pricehead">
+                                    <img src="~/Tra/assets/images/@pac.Image" style="width:200px;height:200px"/> @pac.City
+                                </h6>
+                            </div>
+                            <div class="column text-lg-center">
+                                <p class="price-title"> @pac.DayNight</p>
+                            </div>
+                            <div class="column price-number text-md-right">
+                                <h3 class="pricing">
+                                    <sup class="pri1">₺</sup> @(pac.Price/100)<sup class="pri">99</sup>
+                                </h3>
+                                <button class="btn btn-style btn-primary ml-lg-3">İncele</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+
+

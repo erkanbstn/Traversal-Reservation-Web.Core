@@ -1,0 +1,29 @@
+﻿@model List<Comment>
+
+<div class="comments mt-5">
+    <h4 class="side-title ">Yorumlar (@ViewBag.yorum)</h4>
+
+
+    <div class="media mt-4">
+        @foreach (var com in Model)
+        {
+            <div class="img-circle">
+                <img src="~/Tra/assets/images/@ViewBag.UserImage" class="img-fluid" alt="...">
+            </div>
+            <div class="media-body">
+
+                <ul class="time-rply mb-2">
+                    <li>
+                        <span class="name mt-0 mb-2 d-block">@ViewBag.UserName</span>
+                        @Convert.ToDateTime(com.CommentDate).ToString("dd/MM/yyyy")
+                    </li>
+                </ul>
+                <p>
+                    @com.Detail
+                </p>
+            </div>
+        }
+    </div>
+
+
+</div>

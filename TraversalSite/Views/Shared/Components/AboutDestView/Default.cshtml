@@ -1,0 +1,21 @@
+﻿@model List<Destination>
+
+
+<section class="w3l-grids1">
+    <div class="hny-three-grids py-5">
+        <div class="container py-lg-5">
+            <div class="row">
+                @foreach (var dest in Model)
+                {
+                    <div class="col-md-4 col-sm-6 mt-0 grids5-info">
+                        <img src="~/Tra/assets/images/@dest.Image" class="img-fluid" alt="">
+                        <h5>@dest.City</h5>
+                        <h4>@dest.Description</h4>
+                        <p>Partnerlerimize Destek Olun</p>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

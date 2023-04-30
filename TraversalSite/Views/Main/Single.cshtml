@@ -1,0 +1,70 @@
+﻿@model Destination
+@{
+    ViewData["Title"] = "Single";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<!-- about breadcrumb -->
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container">
+            <h2 class="title">Rota Detay</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a href="~/Main/Index">Ana Sayfa</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Rota Detay </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+<!--/blog-->
+<div class="py-5 w3l-homeblock1 text-center">
+    <div class="container mt-md-3">
+        <h3 class="blog-desc-big text-center mb-4">
+            Rotalarınızın Detayları İnsanları Yoruyor mu ?
+            O Halde Nasıl Daha Göz Alıcı Detaylar Yazabileceğinizi Öğrenin.
+        </h3>
+    </div>
+</div>
+<section class="blog-post-main w3l-homeblock1">
+    <!--/blog-post-->
+    <div class="blog-content-inf pb-5">
+        <div class="container pb-lg-4">
+            <div class="single-post-image">
+                <div class="post-content">
+                    <img src="~/Tra/assets/images/@Model.Image" style="margin-left:390px" class="radius-image img-fluid mb-5" alt="" />
+                </div>
+            </div>
+            <div class="single-post-content">
+
+                <h3 class="blog-desc-big m-0 mb-4">@Model.Description</h3>
+                <p class="mb-4">
+                    @Model.Details1
+                </p>
+                <p class="mb-4">
+                    @Model.Details2
+                </p>
+
+                @await Component.InvokeAsync("SingleCommentView",new {id=Model.DestinationId})
+                <div class="leave-comment-form mt-5" id="reply">
+                    <h4 class="side-title mb-2">Yorum Bırak </h4>
+                    <p class="mb-4">
+                        Email Adresiniz Paylaşılmayacaktır. Gerekli Alanlar * İle İşaretlenmiştir.
+                    </p>
+                    <form action="#" method="post">
+
+                        <div class="form-group">
+                            <textarea name="Comment" class="form-control" placeholder="Yorum Detayları*" required=""
+                                      spellcheck="false"></textarea>
+                        </div>
+
+                        <div class="submit text-right">
+                            <button class="btn btn-style btn-primary">Yorum Yap </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--//blog-post-->
+</section>
+
