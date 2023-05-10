@@ -4,5 +4,20 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<h1>NewReservation</h1>
 
+<h1>Yeni Rezervasyon</h1>
+<form method="post">
+    <span>Lokasyon</span>
+    @Html.DropDownListFor(b=>b.DestinationId,(List<SelectListItem>)ViewBag.rotalar, "Rota Seçiniz", new { @class = "form-control" })
+    <br />
+    <span>Kişi Sayısı</span>
+    <input type="text" name="PersonCount" class="form-control" />
+    <br />
+    <span>Tarih</span>
+    <input type="date" name="ReservationDate" class="form-control" />
+    <br />
+    <span>Not</span>
+    <input type="text" name="Description" class="form-control" />
+    <br />
+    <input type="submit" class="btn btn-primary" value="Değişiklikleri Kaydet" />
+</form>

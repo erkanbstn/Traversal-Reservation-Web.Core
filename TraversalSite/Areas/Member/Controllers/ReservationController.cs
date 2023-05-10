@@ -17,7 +17,7 @@ namespace TraversalSite.Areas.Member.Controllers
         ReservationManager rm = new ReservationManager(new EFReservationDal());
         public IActionResult Index()
         {
-            var reservations= rm.YouCanList();
+            var reservations= rm.TGetListByUsers();
             return View(reservations);
         }
         public IActionResult NewReservation()
@@ -35,6 +35,7 @@ namespace TraversalSite.Areas.Member.Controllers
         [HttpPost]
         public IActionResult NewReservation(Reservation r)
         {
+            r.AppUserId = 1;
             rm.YouCanInsert(r);
             return RedirectToAction("Index");
         }

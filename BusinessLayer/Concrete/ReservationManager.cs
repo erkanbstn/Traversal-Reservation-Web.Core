@@ -18,6 +18,12 @@ namespace BusinessLayer.Concrete
         {
             _ReservationDal = ReservationDal;
         }
+
+        public List<Reservation> TGetListByUsers()
+        {
+            return _ReservationDal.GetListByUsers();
+        }
+
         public void YouCanDelete(Reservation t)
         {
             _ReservationDal.Delete(t);

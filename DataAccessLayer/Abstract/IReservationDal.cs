@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IReservationDal:IGenericDal<Reservation>
     {
+        List<Reservation> GetListByUsers();
     }
 }
