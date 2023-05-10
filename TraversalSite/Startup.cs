@@ -70,7 +70,7 @@ namespace TraversalSite
                     name: "default",
                     pattern: "{controller=Auth}/{action=Login}/{id?}");
             });
-           
+
         }
     }
 }

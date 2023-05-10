@@ -2,10 +2,12 @@
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace TraversalSite.Areas.Member.Controllers
 {
@@ -13,11 +15,19 @@ namespace TraversalSite.Areas.Member.Controllers
     [AllowAnonymous]
     public class ReservationController : Controller
     {
+        private readonly UserManager<AppUser> _userManager;
+
+        public ReservationController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
         DestinationManager dm = new DestinationManager(new EFDestinationDal());
         ReservationManager rm = new ReservationManager(new EFReservationDal());
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var reservations= rm.TGetListByUsers();
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var reservations = rm.TGetListByUsers(user.Id);
             return View(reservations);
         }
         public IActionResult NewReservation()
@@ -33,9 +43,11 @@ namespace TraversalSite.Areas.Member.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult NewReservation(Reservation r)
+        public async Task<IActionResult> NewReservation(Reservation r)
         {
-            r.AppUserId = 1;
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            r.AppUserId = user.Id;
+            r.Status = "Onay Bekliyor."; // Müşteri İptal Etti, Onaylandı, Kontenjan Dolu
             rm.YouCanInsert(r);
             return RedirectToAction("Index");
         }

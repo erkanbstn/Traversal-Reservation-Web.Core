@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en"
+      class="light-style layout-menu-fixed"
+      dir="ltr"
+      data-theme="theme-default"
+      data-assets-path="../assets/"
+      data-template="vertical-menu-template-free">
+<partial name="~/Views/AdminLayoutPartials/_Link.cshtml" />
+<body>
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <partial name="~/Views/AdminLayoutPartials/_Aside.cshtml" />
+            <div class="layout-page">
+                <partial name="~/Views/AdminLayoutPartials/_Navbar.cshtml" />
+                <div class="content-wrapper">
+                    @RenderBody()
+                    <partial name="~/Views/AdminLayoutPartials/_Footer.cshtml" />
+                    <div class="content-backdrop fade"></div>
+                </div>
+            </div>
+        </div>
+        <div class="layout-overlay layout-menu-toggle"></div>
+    </div>
+    <partial name="~/Views/AdminLayoutPartials/_Scripts.cshtml" />
+</body>
+</html>

@@ -53,16 +53,23 @@
                                         <p class="text-sm font-weight-bold mb-0">@res.PersonCount₺</p>
                                     </td>
                                     <td>
-                                        <span class="text-xs font-weight-bold">@res.DestinationId</span>
+                                        <span class="text-xs font-weight-bold">@res.Destination.City</span>
                                     </td>
                                     <td>
-                                        <p class="text-sm font-weight-bold mb-0">@res.ReservationDate</p>
+                                        <p class="text-sm font-weight-bold mb-0">@Convert.ToDateTime(res.ReservationDate).ToString("dd/MM/yyyy")</p>
                                     </td>
                                     <td>
                                         <p class="text-sm font-weight-bold mb-0">@res.Description</p>
                                     </td>
                                     <td>
-                                        <p class="text-sm font-weight-bold mb-0">@res.Status</p>
+                                        @if (res.Status == "Onay Bekliyor")
+                                        {
+                                            <p class="text-sm font-weight-bold mb-0 text text-danger">@res.Status</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="text-sm font-weight-bold mb-0 text text-success">@res.Status</p>
+                                        }
                                     </td>
                                   @*  <td>
                                         <p class="text-sm font-weight-bold mb-0">@(res.Description.Length > 20 ? dest.Description.Substring(0, dest.Description.Substring(0, 20).LastIndexOf(" ")) + "..." : dest.Description + "...")</p>
