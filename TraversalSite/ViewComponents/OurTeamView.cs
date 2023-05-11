@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,10 +7,16 @@ namespace TraversalSite.ViewComponents
 {
     public class OurTeamView : ViewComponent
     {
-        GuideManager gm = new GuideManager(new EFGuideDal());
+        private readonly IGuideService _guideService;
+
+        public OurTeamView(IGuideService guideService)
+        {
+            _guideService = guideService;
+        }
+
         public IViewComponentResult Invoke()
         {
-            var guides = gm.YouCanList();
+            var guides = _guideService.YouCanList();
             return View(guides);
         }
     }

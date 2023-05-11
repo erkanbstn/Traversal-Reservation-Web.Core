@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,11 +9,17 @@ namespace TraversalSite.Controllers
     [AllowAnonymous]
     public class MainController : Controller
     {
-        DestinationManager dm = new DestinationManager(new EFDestinationDal());
-        GuideManager gm = new GuideManager(new EFGuideDal());
-        UserManager um = new UserManager(new EFUserDal());
-        
+       
+        private readonly IGuideService _guideService;
+        private readonly IDestinationService _destinationService;
+        private readonly IUserService _userService;
 
+        public MainController(IGuideService guideService, IDestinationService destinationService, IUserService userService)
+        {
+            _guideService = guideService;
+            _destinationService = destinationService;
+            _userService = userService;
+        }
 
         public IActionResult Index()
         {
@@ -20,25 +27,25 @@ namespace TraversalSite.Controllers
         }
         public IActionResult About()
         {
-            ViewBag.rehber = gm.YouCanList().Count;
-            ViewBag.musteri = um.YouCanList().Count;
-            ViewBag.tur = dm.YouCanList().Count;
+            ViewBag.rehber = _guideService.YouCanList().Count;
+            ViewBag.musteri = _userService.YouCanList().Count;
+            ViewBag.tur = _destinationService.YouCanList().Count;
             return View();
         }
         public IActionResult Services()
         {
-            return View(dm.YouCanList());
+            return View(_destinationService.YouCanList());
         }
         public IActionResult Packages()
         {
-            var destinations = dm.YouCanList();
+            var destinations = _destinationService.YouCanList();
             return View(destinations);
         }
         public IActionResult Single(int id)
         {
             if (id > 0)
             {
-                var destination  = dm.YouCanGetById(id);
+                var destination  = _destinationService.YouCanGetById(id);
                 return View(destination);
             }
             return RedirectToAction("Index");

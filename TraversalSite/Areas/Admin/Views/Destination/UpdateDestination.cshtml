@@ -1,0 +1,46 @@
+﻿@model Destination
+@{
+    ViewData["Title"] = "UpdateDestination";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="padding:20px">
+    <h1>Rota Düzenle</h1>
+    <div>
+        <form method="post">
+            <input type="hidden" asp-for="DestinationId" class="form-control" />
+            <br />
+            <span>Şehir</span>
+            <input type="text" asp-for="City" class="form-control" />
+            <br />
+            <span>Kontenjan</span>
+            <input type="text" asp-for="Capacity" class="form-control" />
+            <br />
+            <span>Kontenjan</span>
+            <input type="text" asp-for="Price" class="form-control" />
+            <br />
+            <span>Gün</span>
+            <input type="text" asp-for="DayNight" class="form-control" />
+            <br />
+            <span>Açıklama</span>
+            <input type="text" asp-for="Description" class="form-control" />
+            <br />
+            <span>Detay 1</span>
+            <input type="text" asp-for="Details1" class="form-control" />
+            <br />
+            <span>Detay 2</span>
+            <input type="text" asp-for="Details2" class="form-control" />
+            <br />
+            <span>Kapak Görseli</span>
+            <input type="text" asp-for="CoverImage" class="form-control" />
+            <br />
+            <span>Görsel 1</span>
+            <input type="text" asp-for="Image" class="form-control" />
+            <br />
+            <span>Görsel 2</span>
+            <input type="text" asp-for="Image2" class="form-control" />
+            <br />
+            <input type="submit" class="btn btn-primary" value="Değişiklikleri Kaydet" />
+        </form>
+    </div>
+</div>

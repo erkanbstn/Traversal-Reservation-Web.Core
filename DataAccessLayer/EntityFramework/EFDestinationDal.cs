@@ -19,5 +19,23 @@ namespace DataAccessLayer.EntityFramework
                 return c.Destinations.Take(3).ToList();
             }
         }
+        public void SetTrueStatus(int id)
+        {
+            using (var c = new Context())
+            {
+                var dest = c.Destinations.Find(id);
+                dest.Status = true;
+                c.SaveChanges();
+            }
+        }
+        public void SetFalseStatus(int id)
+        {
+            using (var c = new Context())
+            {
+                var dest = c.Destinations.Find(id);
+                dest.Status = false;
+                c.SaveChanges();
+            }
+        }
     }
 }

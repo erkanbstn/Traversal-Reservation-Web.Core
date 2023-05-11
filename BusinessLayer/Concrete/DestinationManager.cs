@@ -19,6 +19,16 @@ namespace BusinessLayer.Concrete
             _destinationDal = destinationDal;
         }
 
+        public void TSetFalseStatus(int id)
+        {
+            _destinationDal.SetFalseStatus(id);
+        }
+
+        public void TSetTrueStatus(int id)
+        {
+            _destinationDal.SetTrueStatus(id);
+        }
+
         public void YouCanDelete(Destination t)
         {
             _destinationDal.Delete(t);

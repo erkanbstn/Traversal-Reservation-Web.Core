@@ -18,6 +18,12 @@ namespace BusinessLayer.Concrete
         {
             _CommentDal = CommentDal;
         }
+
+        public List<Comment> TGetCommentByDetail()
+        {
+            return _CommentDal.GetCommentByDetail();
+        }
+
         public void YouCanDelete(Comment t)
         {
             _CommentDal.Delete(t);
@@ -25,7 +31,7 @@ namespace BusinessLayer.Concrete
 
         public Comment YouCanGetById(int id)
         {
-           return  _CommentDal.GetById(id);
+            return _CommentDal.GetById(id);
         }
 
         public void YouCanInsert(Comment t)

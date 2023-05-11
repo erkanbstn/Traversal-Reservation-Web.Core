@@ -10,5 +10,7 @@ namespace DataAccessLayer.Abstract
     public interface IDestinationDal : IGenericDal<Destination>
     {
         List<Destination> GetDestinationsBy3();
+        void SetTrueStatus(int id);
+        void SetFalseStatus(int id);
     }
 }

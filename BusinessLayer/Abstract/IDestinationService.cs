@@ -10,5 +10,7 @@ namespace BusinessLayer.Abstract
     public interface IDestinationService : IGenericService<Destination>
     {
         List<Destination> YouCanGetBy3();
+        void TSetTrueStatus(int id);
+        void TSetFalseStatus(int id);
     }
 }

@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
@@ -8,14 +9,22 @@ namespace TraversalSite.ViewComponents
 {
     public class StatsView : ViewComponent
     {
-        DestinationManager dm = new DestinationManager(new EFDestinationDal());
-        GuideManager gm = new GuideManager(new EFGuideDal());
-        UserManager um = new UserManager(new EFUserDal());
+        private readonly IDestinationService _destinationService;
+        private readonly IGuideService _guideService;
+        private readonly IUserService _userService;
+
+        public StatsView(IDestinationService destinationService, IGuideService guideService, IUserService userService)
+        {
+            _destinationService = destinationService;
+            _guideService = guideService;
+            _userService = userService;
+        }
+
         public IViewComponentResult Invoke()
         {
-            ViewBag.guides = gm.YouCanList().Count;
-            ViewBag.destinations = dm.YouCanList().Count;
-            ViewBag.clients = um.YouCanList().Count;
+            ViewBag.guides = _guideService.YouCanList().Count;
+            ViewBag.destinations = _destinationService.YouCanList().Count;
+            ViewBag.clients = _userService.YouCanList().Count;
             ViewBag.awards = "28";
 
             return View();

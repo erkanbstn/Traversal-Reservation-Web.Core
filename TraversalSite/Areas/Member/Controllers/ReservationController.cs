@@ -33,6 +33,7 @@ namespace TraversalSite.Areas.Member.Controllers
         public IActionResult NewReservation()
         {
             List<SelectListItem> values = (from x in dm.YouCanList()
+                                           where x.Status == true
                                            select new SelectListItem
                                            {
                                                Text = x.City,
