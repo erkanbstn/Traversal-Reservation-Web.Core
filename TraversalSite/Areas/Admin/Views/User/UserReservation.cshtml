@@ -1,0 +1,69 @@
+﻿@model List<Reservation>
+@{
+    ViewData["Title"] = "UserReservation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sayfalar/</span>Kullanıcı Rezervasyonları</h4>
+    <div class="row">
+        <div class="card">
+            <h5 class="card-header">Kullanıcı Rezervasyonları</h5>
+            <div class="table-responsive text-nowrap">
+                <br />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Kullanıcı</th>
+                            <th>Rota</th>
+                            <th>Tarih</th>
+                            <th>Not</th>
+                            <th>Telefon</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var res in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0">@res.ReservationId</p>
+                                </td>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0">@res.AppUser.Name</p>
+                                </td>
+                                <td>
+                                    <span class="text-xs font-weight-bold">@res.Destination.City</span>
+                                </td>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0">@Convert.ToDateTime(res.ReservationDate).ToString("dd/MM/yyyy")</p>
+                                </td>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0">@res.Description</p>
+                                </td>
+                                <td>
+                                    <p class="text-sm font-weight-bold mb-0">@res.AppUser.PhoneNumber</p>
+                                </td>
+                                <td>
+                                    @if (res.Status == "Onay Bekliyor")
+                                    {
+                                        <p class="text-sm font-weight-bold mb-0 text text-danger">@res.Status</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="text-sm font-weight-bold mb-0 text text-success">@res.Status</p>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr class="my-5" />
+    </div>
+</div>
+

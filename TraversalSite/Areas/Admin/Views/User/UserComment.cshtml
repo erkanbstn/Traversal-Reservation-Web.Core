@@ -1,0 +1,41 @@
+﻿@model List<Comment>
+@{
+    ViewData["Title"] = "UserComment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sayfalar/</span>Kullanıcı Yorumu</h4>
+    <div class="row">
+        <div class="card">
+            <h5 class="card-header">Kullanıcı Yorumu</h5>
+            <div class="table-responsive text-nowrap">
+                <br />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Kullanıcı</th>
+                            <th>Yorum</th>
+                            <th>Rota</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var com in Model)
+                        {
+                            <tr>
+                                <td><span>@com.CommentId</span></td>
+                                <td><span>@com.AppUser.Name</span></td>
+                                <td><span>@com.Detail</span></td>
+                                <td><span>@com.Destination.City</span></td>
+                                @*<td><span><a href="~/Admin/User/UserReservation/@user.Id" class="btn btn-warning">Rezervasyonlar</a></span></td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr class="my-5" />
+    </div>
+</div>

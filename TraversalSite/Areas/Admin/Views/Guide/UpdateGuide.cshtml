@@ -1,0 +1,29 @@
+﻿@model Guide
+@{
+    ViewData["Title"] = "UpdateGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<div style="padding:20px">
+    <h1>Rehber Düzenle</h1>
+    <div>
+        <form method="post">
+            <input type="hidden" asp-for="GuideId" class="form-control" />
+            <span>Rehber</span>
+            <input type="text" asp-for="Name" class="form-control" />
+            <br />
+            <span>Açıklama</span>
+            <input type="text" asp-for="Description" class="form-control" />
+            <br />
+            <span>Resim</span>
+            <input type="text" asp-for="Image" class="form-control" />
+            <br />
+            <span>Url</span>
+            <input type="text" asp-for="InstagramUrl" class="form-control" />
+            <br />
+            <input type="submit" class="btn btn-primary" value="Değişiklikleri Kaydet" />
+        </form>
+    </div>
+</div>
+

@@ -24,6 +24,11 @@ namespace BusinessLayer.Concrete
             return _CommentDal.GetCommentByDetail();
         }
 
+        public List<Comment> TGetCommentByUser(int id)
+        {
+            return _CommentDal.GetCommentByUser(id);
+        }
+
         public void YouCanDelete(Comment t)
         {
             _CommentDal.Delete(t);

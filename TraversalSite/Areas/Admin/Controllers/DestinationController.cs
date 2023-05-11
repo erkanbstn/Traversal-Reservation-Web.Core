@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +9,16 @@ namespace TraversalSite.Areas.Admin.Controllers
     [Area("Admin")]
     public class DestinationController : Controller
     {
-        DestinationManager dm = new DestinationManager(new EFDestinationDal());
+        private readonly IDestinationService _destinationService;
+
+        public DestinationController(IDestinationService destinationService)
+        {
+            _destinationService = destinationService;
+        }
+
         public IActionResult Index()
         {
-            var values = dm.YouCanList();
+            var values = _destinationService.YouCanList();
             return View(values);
         }
         public IActionResult AddDestination()
@@ -21,17 +28,17 @@ namespace TraversalSite.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult AddDestination(Destination destination)
         {
-            dm.YouCanInsert(destination);
+            _destinationService.YouCanInsert(destination);
             return RedirectToAction("Index");
         }
         public IActionResult UpdateDestination(int id)
         {
-            return View(dm.YouCanGetById(id));
+            return View(_destinationService.YouCanGetById(id));
         }
         [HttpPost]
         public IActionResult UpdateDestination(Destination destination)
         {
-            dm.YouCanUpdate(destination);
+            _destinationService.YouCanUpdate(destination);
             return RedirectToAction("Index");
         }
         [HttpGet("~/Admin/Destination/ChangeDestinationStatus/{id}/{destId}")]
@@ -39,11 +46,11 @@ namespace TraversalSite.Areas.Admin.Controllers
         {
             if (id == 1)
             {
-               dm.TSetTrueStatus(destId);
+                _destinationService.TSetTrueStatus(destId);
             }
             else
             {
-                dm.TSetFalseStatus(destId);
+                _destinationService.TSetFalseStatus(destId);
             }
             return RedirectToAction("Index");
         }

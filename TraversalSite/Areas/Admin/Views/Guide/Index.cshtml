@@ -1,0 +1,49 @@
+﻿@model List<Guide>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sayfalar/</span>Rehberler</h4>
+    <div class="row">
+        <div class="card">
+            <h5 class="card-header">Rehberler</h5>
+            <div class="table-responsive text-nowrap">
+                <br />
+                <a href="~/Admin/Guide/AddGuide" class="btn btn-danger">Yeni Rehber Ekle</a>
+                <br />
+                <br />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Rehber</th>
+                            <th>Görsel</th>
+                            <th>Tanım</th>
+                            <th>Url</th>
+                            <th>Aksiyon</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var gud in Model)
+                        {
+                            <tr>
+                                <td><span>@gud.GuideId</span></td>
+                                <td><span>@gud.Name</span></td>
+                                <td><span><img src="~/Tra/assets/images/@gud.Image" width="120px" height="120px" /></span></td>
+                                <td><span>@gud.Description</span></td>
+                                <td><span>@gud.InstagramUrl</span></td>
+                                <td><span><a href="~/Admin/Guide/DeleteGuide/@gud.GuideId" class="btn btn-danger">Sil</a></span></td>
+                                <td><span><a href="~/Admin/Guide/UpdateGuide/@gud.GuideId" class="btn btn-primary">Düzenle</a></span></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr class="my-5" />
+    </div>
+</div>
+

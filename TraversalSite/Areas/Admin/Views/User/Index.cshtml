@@ -1,0 +1,51 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sayfalar/</span>Kullanıcılar</h4>
+    <div class="row">
+        <div class="card">
+            <h5 class="card-header">Kullanıcılar</h5>
+            <div class="table-responsive text-nowrap">
+                <br />
+                <a href="~/Auth/Register" class="btn btn-danger">Yeni Kullanıcı Ekle</a>
+                <br />
+                <br />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Kullanıcı</th>
+                            <th>Görsel</th>
+                            <th>Email</th>
+                            <th>Telefon</th>
+                            <th colspan="4" style="text-align:center">Aksiyon</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td><span>@user.Id</span></td>
+                                <td><span>@user.Name</span></td>
+                                <td><span><img src="~/Tra/assets/images/@user.Image" width="120px" height="120px" /></span></td>
+                                <td><span>@user.Email</span></td>
+                                <td><span>@user.PhoneNumber</span></td>
+                                <td><span><a href="~/Admin/User/DeleteUser/@user.Id" class="btn btn-danger">Sil</a></span></td>
+                                <td><span><a href="~/Admin/User/UpdateUser/@user.Id" class="btn btn-success">Düzenle</a></span></td>
+                                <td><span><a href="~/Admin/User/UserComment/@user.Id" class="btn btn-primary">Yorumlar</a></span></td>
+                                <td><span><a href="~/Admin/User/UserReservation/@user.Id" class="btn btn-warning">Rezervasyonlar</a></span></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr class="my-5" />
+    </div>
+</div>
+

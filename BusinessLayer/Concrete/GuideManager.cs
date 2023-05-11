@@ -25,7 +25,7 @@ namespace BusinessLayer.Concrete
 
         public Guide YouCanGetById(int id)
         {
-            throw new NotImplementedException();
+           return _GuideDal.GetById(id);
         }
 
         public void YouCanInsert(Guide t)
