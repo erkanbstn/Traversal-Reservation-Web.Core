@@ -1,0 +1,17 @@
+﻿@model Comment
+@{
+    ViewData["Title"] = "CommentDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div style="padding:20px">
+
+    <h1>Yorum Detayları</h1>
+    <br />
+    <span>Yorum İçeriği</span>
+    <input type="text" asp-for="Detail" class="form-control" />
+    <br />
+    <span>Yorum Yapan</span>
+    <input type="text" value="@ViewBag.user" class="form-control" />
+
+</div>
+

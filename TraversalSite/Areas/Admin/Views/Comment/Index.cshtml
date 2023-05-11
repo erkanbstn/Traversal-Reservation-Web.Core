@@ -12,9 +12,6 @@
             <h5 class="card-header">Yorumlar</h5>
             <div class="table-responsive text-nowrap">
                 <br />
-                <a href="~/Admin/Comment/AddComment" class="btn btn-danger">Yeni Yorum Ekle</a>
-                <br />
-                <br />
                 <table class="table">
                     <thead>
                         <tr>
@@ -37,15 +34,14 @@
                                 @if (com.Status == true)
                                 {
                                     <td><span class="badge bg-label-success me-1">Aktif</span></td>
-                                    <td><span><a href="~/Admin/Destination/ChangeDestinationStatus/0/@com.CommentId" class="btn btn-warning">Pasif Yap</a></span></td>
                                 }
                                 else
                                 {
                                     <td><span class="badge bg-label-danger me-1">Pasif</span></td>
-                                    <td><span><a href="~/Admin/Destination/ChangeDestinationStatus/1/@com.CommentId" class="btn btn-success">Aktif Yap</a></span></td>
 
                                 }
-                                <td><span><a href="~/Admin/Destination/UpdateDestination/@com.CommentId" class="btn btn-primary">Düzenle</a></span></td>
+                                <td><span><a href="~/Admin/Comment/DeleteComment/@com.CommentId" class="btn btn-danger">Sil</a></span></td>
+                                <td><span><a href="~/Admin/Comment/CommentDetail/@com.CommentId" class="btn btn-primary">Detay</a></span></td>
                             </tr>
                         }
                     </tbody>
