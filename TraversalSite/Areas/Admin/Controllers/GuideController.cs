@@ -19,7 +19,7 @@ namespace TraversalSite.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            _logger.LogInformation("Rehber Listesi Görüntülendi");
+            //_logger.LogInformation("Rehber Listesi Görüntülendi");
             var values = _guideService.YouCanList();
             return View(values);
         }

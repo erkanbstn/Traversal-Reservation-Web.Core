@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TraversalSite.Models
+namespace DtoLayer.Dtos.AppUserDto
 {
     public class UserRegisterViewModel
     {

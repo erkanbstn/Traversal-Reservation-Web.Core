@@ -1,0 +1,18 @@
+﻿@model Contact
+@{
+    ViewData["Title"] = "ContactDetail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div style="padding:20px">
+
+    <h1>Mesaj Detayları</h1>
+    <br />
+    <span>Mesaj İçeriği</span>
+    <input type="text" asp-for="Description" class="form-control" />
+    <br />
+    <span>Gönderen</span>
+    <input type="text" asp-for="Email" class="form-control" />
+</div>
+
+

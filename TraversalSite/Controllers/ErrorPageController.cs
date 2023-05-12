@@ -6,7 +6,6 @@ namespace TraversalSite.Controllers
     {
         public IActionResult Error404(int code)
         {
-
             return View();
         }
     }

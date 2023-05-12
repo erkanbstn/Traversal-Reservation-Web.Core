@@ -1,0 +1,45 @@
+﻿@model List<Contact>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sayfalar/</span>Mesajlar</h4>
+    <div class="row">
+        <div class="card">
+            <h5 class="card-header">Mesajlar</h5>
+            <div class="table-responsive text-nowrap">
+                <br />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Email</th>
+                            <th>Telefon</th>
+                            <th>Adres</th>
+                            <th>Lokasyon</th>
+                            <th colspan="2" style="text-align:center">Aksiyon</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var mes in Model)
+                        {
+                            <tr>
+                                <td><span>@mes.ContactId</span></td>
+                                <td><span>@mes.Email</span></td>
+                                <td><span>@mes.Phone</span></td>
+                                <td><span>@mes.Address</span></td>
+                                <td><span>@mes.MapLocation</span></td>
+                                <td><span><a href="~/Admin/Contact/DeleteContact/@mes.ContactId" class="btn btn-danger">Sil</a></span></td>
+                                <td><span><a href="~/Admin/Contact/ContactDetail/@mes.ContactId" class="btn btn-primary">İncele</a></span></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr class="my-5" />
+    </div>
+</div>
+

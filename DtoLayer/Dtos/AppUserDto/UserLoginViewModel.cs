@@ -1,4 +1,4 @@
-﻿namespace TraversalSite.Models
+﻿namespace DtoLayer.Dtos.AppUserDto
 {
     public class UserLoginViewModel
     {
