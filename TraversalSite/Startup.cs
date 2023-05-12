@@ -41,6 +41,7 @@ namespace TraversalSite
 
 
             });
+            services.AddHttpClient();
             services.AddAutoMapper(typeof(Startup));
             services.AddControllersWithViews().AddFluentValidation();
             services.AddDbContext<Context>();
