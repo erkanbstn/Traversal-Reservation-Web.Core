@@ -50,13 +50,45 @@ namespace TraversalSite.Areas.Admin.Controllers
             }
             return View();
         }
-        public IActionResult UpdateVisitor()
+        [HttpGet]
+        public async Task<IActionResult> UpdateVisitor(int id)
         {
-            return View();
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.GetAsync($"http://localhost:38979/api/Visitor/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonConvert = await response.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<VisitorListDto>(jsonConvert);
+                return View(values);
+            }
+            return RedirectToAction("Index");
         }
-        public IActionResult DeleteVisitor(int id)
+        [HttpPost]
+        public async Task<IActionResult> UpdateVisitor(VisitorUpdateDto visitorUpdateDto)
         {
-            return View();
+            var client = _httpClientFactory.CreateClient();
+            var jsonConvert = JsonConvert.SerializeObject(visitorUpdateDto);
+            StringContent content = new StringContent(jsonConvert, Encoding.UTF8, "application/json");
+            var response = await client.PutAsync("http://localhost:38979/api/Visitor", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
+        public async Task<IActionResult> DeleteVisitor(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var response = await client.DeleteAsync($"http://localhost:38979/api/Visitor?id={id}");
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+
+
     }
 }

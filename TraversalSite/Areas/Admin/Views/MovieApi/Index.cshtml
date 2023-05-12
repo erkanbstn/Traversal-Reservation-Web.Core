@@ -1,0 +1,44 @@
+﻿@model List<MovieListDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sayfalar/</span>IMDB Top 100 Film</h4>
+    <div class="row">
+        <div class="card">
+            <h5 class="card-header">IMDB Top 100 Film</h5>
+            <div class="table-responsive text-nowrap">
+                <br />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sıra</th>
+                            <th>Film</th>
+                            <th>Puan</th>
+                            <th>Yıl</th>
+                            <th>Imdb Id</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var mov in Model)
+                        {
+                            <tr>
+                                <td><span>@mov.Rank</span></td>
+                                <td><span>@mov.Title</span></td>
+                                <td><span>@mov.Rating</span></td>
+                                <td><span>@mov.Year</span></td>
+                                <td><span>@mov.ImdbId</span></td>
+                                @*<td><span><a href="~/Admin/VisitorApi/UpdateVisitor/@vis.VisitorId" class="btn btn-primary">Düzenle</a></span></td>*@
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr class="my-5" />
+    </div>
+</div>
