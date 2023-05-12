@@ -1,10 +1,7 @@
-using BusinessLayer.Abstract;
-using BusinessLayer.Concrete;
 using BusinessLayer.Container;
-using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
-using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -14,11 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using TraversalSite.Models;
 
 namespace TraversalSite
@@ -48,7 +41,8 @@ namespace TraversalSite
 
 
             });
-            services.AddControllersWithViews();
+            services.AddAutoMapper(typeof(Startup));
+            services.AddControllersWithViews().AddFluentValidation();
             services.AddDbContext<Context>();
             services.AddIdentity<AppUser, AppRole>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
             services.AddMvc(config =>
@@ -58,8 +52,8 @@ namespace TraversalSite
             });
             services.AddMvc();
 
-            Extensions extensions = new Extensions();
-            extensions.ContainerDependencies(services);
+            services.CustomValidator();
+            services.ContainerDependencies();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

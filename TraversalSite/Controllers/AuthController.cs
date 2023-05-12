@@ -29,7 +29,7 @@ namespace TraversalSite.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Login(UserLoginViewModel user)
+        public async Task<IActionResult> Login(UserLoginDto user)
         {
             if (user.Password != "" && user.UserName != "")
             {
@@ -46,7 +46,7 @@ namespace TraversalSite.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Register(UserRegisterViewModel user)
+        public async Task<IActionResult> Register(UserRegisterDto user)
         {
             AppUser app = new AppUser()
             {
@@ -76,28 +76,28 @@ namespace TraversalSite.Controllers
         {
             // Mail
 
-            MimeMessage mime = new MimeMessage();
-            MailDto mail = new MailDto()
-            {
-                Name = "Traversal",
-                Body="Hesaptan Çıkış Yapıldı.",
-                SenderMail = "traversalcore2@gmail.com",
-                ReceiverMail = "test34@gmail.com",
-                Subject = "Traversal Mail"
-            };
-            MailboxAddress mailboxFrom = new MailboxAddress(mail.Name, mail.SenderMail);
-            MailboxAddress mailboxTo = new MailboxAddress("User", mail.ReceiverMail);
-            mime.From.Add(mailboxFrom);
-            mime.To.Add(mailboxTo);
-            var bodyBuilder = new BodyBuilder();
-            bodyBuilder.TextBody = mail.Body;
-            mime.Body=bodyBuilder.ToMessageBody();
-            mime.Subject = mail.Subject;
-            SmtpClient client = new SmtpClient();
-            client.Connect("smtp.gmail.com", 587, false);
-            client.Authenticate(mail.SenderMail, "fhvevuwmjwlkpnzm");
-            client.Send(mime);
-            client.Disconnect(true);
+            //MimeMessage mime = new MimeMessage();
+            //MailDto mail = new MailDto()
+            //{
+            //    Name = "Traversal",
+            //    Body="Hesaptan Çıkış Yapıldı.",
+            //    SenderMail = "traversalcore2@gmail.com",
+            //    ReceiverMail = "test34@gmail.com",
+            //    Subject = "Traversal Mail"
+            //};
+            //MailboxAddress mailboxFrom = new MailboxAddress(mail.Name, mail.SenderMail);
+            //MailboxAddress mailboxTo = new MailboxAddress("User", mail.ReceiverMail);
+            //mime.From.Add(mailboxFrom);
+            //mime.To.Add(mailboxTo);
+            //var bodyBuilder = new BodyBuilder();
+            //bodyBuilder.TextBody = mail.Body;
+            //mime.Body=bodyBuilder.ToMessageBody();
+            //mime.Subject = mail.Subject;
+            //SmtpClient client = new SmtpClient();
+            //client.Connect("smtp.gmail.com", 587, false);
+            //client.Authenticate(mail.SenderMail, "fhvevuwmjwlkpnzm");
+            //client.Send(mime);
+            //client.Disconnect(true);
 
             await _signInManager.SignOutAsync(); 
             return RedirectToAction("Login");

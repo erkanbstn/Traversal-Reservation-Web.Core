@@ -1,7 +1,10 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
+using DtoLayer.Dtos.AnnouncementDto;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -11,9 +14,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Container
 {
-    public class Extensions
+    public static class Extensions
     {
-        public void ContainerDependencies(IServiceCollection services)
+        public static void ContainerDependencies(this IServiceCollection services)
         {
             services.AddScoped<ICommentService, CommentManager>();
             services.AddScoped<ICommentDal, EFCommentDal>();
@@ -50,6 +53,14 @@ namespace BusinessLayer.Container
 
             services.AddScoped<IUserService, UserManager>();
             services.AddScoped<IUserDal, EFUserDal>();
+
+            services.AddScoped<IAnnouncementService, AnnouncementManager>();
+            services.AddScoped<IAnnouncementDal, EFAnnouncementDal>();
+        }
+
+        public static void CustomValidator(this IServiceCollection services)
+        {
+            services.AddTransient<IValidator<AnnouncementAddDto>, AnnouncementValidator>();
         }
     }
 }

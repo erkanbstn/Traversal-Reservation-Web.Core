@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,12 +14,14 @@ namespace TraversalSite.Controllers
         private readonly IGuideService _guideService;
         private readonly IDestinationService _destinationService;
         private readonly IUserService _userService;
+        private readonly IContactService _contactService;
 
-        public MainController(IGuideService guideService, IDestinationService destinationService, IUserService userService)
+        public MainController(IGuideService guideService, IDestinationService destinationService, IUserService userService, IContactService contactService)
         {
             _guideService = guideService;
             _destinationService = destinationService;
             _userService = userService;
+            _contactService = contactService;
         }
 
         public IActionResult Index()
@@ -54,6 +57,12 @@ namespace TraversalSite.Controllers
         public IActionResult Contact()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult Contact(Contact contact)
+        {
+            _contactService.YouCanInsert(contact);
+            return RedirectToAction("Contact");
         }
     }
 }

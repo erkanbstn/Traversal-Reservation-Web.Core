@@ -1,0 +1,41 @@
+﻿@model List<AnnouncementListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sayfalar/</span>Duyurular</h4>
+    <div class="row">
+        <div class="card">
+            <h5 class="card-header">Duyurular</h5>
+            <div class="table-responsive text-nowrap">
+                <br />
+                <a href="~/Admin/Announcement/AddAnnouncement" class="btn btn-danger">Yeni Rota Ekle</a>
+                <br />
+                <br />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Başlık</th>
+                            <th>İçerik</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var ann in Model)
+                        {
+                            <tr>
+                                <td><span>@ann.AnnouncementId</span></td>
+                                <td><span>@ann.Title</span></td>
+                                <td><span>@ann.Content</span></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr class="my-5" />
+    </div>
+</div>
