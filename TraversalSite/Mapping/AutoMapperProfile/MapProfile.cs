@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DtoLayer.Dtos.AnnouncementDto;
+using DtoLayer.Dtos.AppRoleDto;
 using DtoLayer.Dtos.AppUserDto;
 using EntityLayer.Concrete;
 
@@ -20,6 +21,12 @@ namespace TraversalSite.Mapping.AutoMapperProfile
 
             CreateMap<UserRegisterDto, AppUser>();
             CreateMap<AppUser, UserRegisterDto>();
+
+            CreateMap<RoleListDto, AppRole>();
+            CreateMap<AppRole, RoleListDto>();
+
+            CreateMap<RoleAddDto, AppRole>();
+            CreateMap<AppRole, RoleAddDto>();
         }
     }
 }

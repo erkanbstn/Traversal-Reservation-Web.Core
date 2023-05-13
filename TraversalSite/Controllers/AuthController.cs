@@ -16,12 +16,13 @@ namespace TraversalSite.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly RoleManager<AppRole> _roleManager;
 
-        public AuthController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
+        public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<AppRole> roleManager)
         {
-            _signInManager = signInManager;
             _userManager = userManager;
-
+            _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         public IActionResult Login()
@@ -36,7 +37,14 @@ namespace TraversalSite.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user.UserName, user.Password, false, true);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Destination", new { area = "Member" });
+                    if (User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("Index", "Destination", new { area = "Admin" });
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Destination", new { area = "Member" });
+                    }
                 }
             }
             return View(user);

@@ -1,0 +1,46 @@
+﻿@model List<RoleByUserListDto>
+@{
+    ViewData["Title"] = "UsersRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sayfalar/</span>Role Ait Kullanıcılar</h4>
+    <div class="row">
+        <div class="card">
+            <h5 class="card-header">Role Ait Kullanıcılar</h5>
+            <form method="post">
+                <div class="table-responsive text-nowrap">
+                    <br />
+                    <br />
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Rol</th>
+                                <th>Sahip</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            @foreach (var rol in Model)
+                            {
+                                <tr>
+                                    <td><span>@rol.RoleId</span></td>
+                                    <td><span>@rol.RoleName</span></td>
+                                    <td><span><input type="checkbox" checked="@rol.RoleExist" class="form-check-input" /></span></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <br />
+                <input type="submit" class="btn btn-primary" value="Değişiklikleri Kaydet"/>
+                <br />
+                <br />
+                <br />
+            </form>
+        </div>
+        <hr class="my-5" />
+    </div>
+</div>
+

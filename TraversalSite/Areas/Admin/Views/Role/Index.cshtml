@@ -1,0 +1,42 @@
+﻿@model List<RoleListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sayfalar/</span>Roller</h4>
+    <div class="row">
+        <div class="card">
+            <h5 class="card-header">Roller</h5>
+            <div class="table-responsive text-nowrap">
+                <br />
+                <a href="~/Admin/Role/AddRole" class="btn btn-danger">Yeni Rol Ekle</a>
+                <br />
+                <br />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Rol</th>
+                            <th colspan="2" style="text-align:center">Aksiyon</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        @foreach (var rol in Model)
+                        {
+                            <tr>
+                                <td><span>@rol.Id</span></td>
+                                <td><span>@rol.Name</span></td>
+                                <td><span><a href="~/Admin/Role/DeleteRole/@rol.Id" class="btn btn-danger">Sil</a></span></td>
+                                <td><span><a href="~/Admin/Role/UpdateRole/@rol.Id" class="btn btn-primary">Düzenle</a></span></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <hr class="my-5" />
+    </div>
+</div>

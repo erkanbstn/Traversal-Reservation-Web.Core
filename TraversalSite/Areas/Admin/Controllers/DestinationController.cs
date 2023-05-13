@@ -76,5 +76,6 @@ namespace TraversalSite.Areas.Admin.Controllers
             var bytes = excel.GetAsByteArray();
             return File(bytes, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "RotaBilgisi.xlsx");
         }
+     
     }
 }

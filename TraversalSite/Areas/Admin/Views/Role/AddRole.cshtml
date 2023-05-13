@@ -1,0 +1,20 @@
+﻿@model RoleAddDto
+@{
+    ViewData["Title"] = "AddRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<div style="padding:20px">
+    <h1>Yeni Rol Ekle</h1>
+    <div>
+        <form method="post">
+            <span>Rol</span>
+            <input type="text" asp-for="Name" class="form-control" />
+            <br />
+            <input type="submit" class="btn btn-primary" value="Değişiklikleri Kaydet" />
+        </form>
+    </div>
+</div>
+
+

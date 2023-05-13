@@ -1,0 +1,19 @@
+﻿@model RoleUpdateDto
+@{
+    ViewData["Title"] = "UpdateRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<div style="padding:20px">
+    <h1>Rol Düzenle</h1>
+    <div>
+        <form method="post">
+            <input type="hidden" asp-for="Id" class="form-control" />
+            <span>Rol</span>
+            <input type="text" asp-for="Name" class="form-control" />
+            <br />
+            <input type="submit" class="btn btn-primary" value="Değişiklikleri Kaydet" />
+        </form>
+    </div>
+</div>
+
